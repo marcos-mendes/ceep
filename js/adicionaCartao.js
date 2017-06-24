@@ -18,7 +18,7 @@
               var buttonOpcoes = $('<button>').addClass('opcoesDoCartao-opcao')
                                               .addClass('opcoesDoCartao-remove')
                                               .attr('data-ref', contador)
-                                              .text('Remover')
+                                              .append('Remover')
                                               .click(removeCartao)
 
               var divOpcoes = $('<div>').addClass('opcoesDoCartao')
@@ -27,8 +27,11 @@
               var cartaoConteudo = $('<p>').addClass('cartao-conteudo')
                                           .append(conteudo)
 
+              var tipoCartao = decideTipoCartao(conteudo);
+
               var cartao = $('<div>').attr('id', 'cartao_'+ contador)
                                      .addClass('cartao')
+                                     .addClass(tipoCartao)
                                      .append(divOpcoes)
                                      .append(cartaoConteudo)
                                      .prependTo('.mural')
@@ -38,5 +41,35 @@
   }
 
 $('#novoCartao').on('submit', adicionaCartao)
+
+
+
+function decideTipoCartao(conteudo){
+  var quebras = conteudo.split("<br>").length;
+
+  var totalDeLetras = conteudo.replace(/<br>/g," ").length;
+
+  var ultimoMaior = "";
+
+  conteudo.replace(/<br>/g," ")
+          .split(" ")
+          .forEach(function(palavra){
+            if(palavra.length > ultimoMaior.length){
+              ultimoMaior = palavra;
+            }
+          });
+  var tamMaior = ultimoMaior.length;
+
+  //no minimo, todo cartão tem o texto pequeno
+  var tipoCartao = "cartao--pequeno";
+
+  if (tamMaior < 9 && quebras < 5 && totalDeLetras < 55){
+    tipoCartao = "cartao--textoGrande";
+  }else if( tamMaior < 12 & quebras < 6 && totalDeLetras < 75){
+    tipoCartao = "cartao--textoMedio";
+  }
+  return tipoCartao;
+}
+
 
 })()

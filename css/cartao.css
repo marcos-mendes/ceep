@@ -19,4 +19,25 @@
 		vertical-align: top;
 	}
 
+.cartao--pequeno{
+	font-size: 1em;
+	width:11em;
+	flex-basis:11em;
+	background:#ccc;
+}
+
+.cartao--textoMedio{
+	font-size: 1.5em;
+	width:9em;
+	flex-basis:9em;
+	background: #red;
+}
+
+.cartao--textoGrande
+{
+	font-size:2em;
+	width:6em;
+	flex-basis: 6em;
+}
+
 }
