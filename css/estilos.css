@@ -60,7 +60,7 @@
 @media(min-width: 560px){
 
     #mudaLayout {
-        display: block;
+        display: inline-block;
     }
 
 }
