@@ -2,7 +2,7 @@ var ctrlCartao = ( function(){
 
   var contador = $('.cartao').length
 
-  function adicionaCartao(conteudo)
+  function adicionaCartao(conteudo,cor)
   {
     contador++
 
@@ -25,7 +25,9 @@ var ctrlCartao = ( function(){
                            .addClass(tipoCartao)
                            .append(divOpcoes)
                            .append(cartaoConteudo)
+                           .css("background",cor)
                            .prependTo('.mural')
+                        
   }
 
 
@@ -69,6 +71,7 @@ var ctrlCartao = ( function(){
 
     setTimeout(function(){
         cartao.remove();
+        $(document).trigger("precisaSincronizar");
     }, 400)
 
   }

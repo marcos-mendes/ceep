@@ -1,6 +1,6 @@
 (function(){
   'use strict'
-  
+
 $('#novoCartao').on('submit', function(event){
 
   event.preventDefault();
@@ -12,6 +12,7 @@ $('#novoCartao').on('submit', function(event){
   if(conteudo.trim()){
 
     ctrlCartao.adicionaCartao(conteudo);
+    $(document).trigger("precisaSincronizar");  
 
   }
 
